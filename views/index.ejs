@@ -1,0 +1,38 @@
+<% include ./partials/header %>
+
+<div class="ui main text container">
+    <div class="ui huge header">S2G10 Blog</div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+            <div class="item">
+                <p>Using mongoDB Atlas. For edit or delete, press Read more.</p>
+             </div>
+
+            <% blogs.forEach(function(blog){ %>
+                <div class="item">
+                    <div class="content">
+                        <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+                        <div class="meta">
+                            <span><%=blog.created.toDateString() %></span>
+                        </div>
+                        <div class="description">
+                            <p><%- blog.body.substring(0,100) %></p> 
+                        </div>
+                        <div class="extra">
+                            <a class="ui floated violet basic button" href="/blogs/<%= blog._id %>">
+                                Read More...
+                            </a>
+                        </div>
+                    </div>
+                </div>
+             <%}); %>
+
+             <div class="item">
+                <a class="ui primary button" href="/blogs/new" class="item">New Post</a>
+             </div>
+        </div>        
+    </div>
+</div>
+
+ 
+<% include ./partials/footer %>
